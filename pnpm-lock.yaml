@@ -18,7 +18,7 @@ dependencies:
     specifier: latest
     version: 3.19.0(payload@3.19.0)
   '@payloadcms/plugin-form-builder':
-    specifier: latest
+    specifier: ^3.19.0
     version: 3.19.0(@types/react@19.0.7)(monaco-editor@0.52.2)(next@15.1.6)(payload@3.19.0)(react-dom@19.0.0)(react@19.0.0)(typescript@5.7.3)
   '@payloadcms/plugin-nested-docs':
     specifier: latest
