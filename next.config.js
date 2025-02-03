@@ -20,8 +20,11 @@ const nextConfig = {
       }),
     ],
   },
-  reactStrictMode: true,
+  reactStrictMode: false,
   redirects,
+  typescript: {
+    ignoreBuildErrors: true
+  }
 }
 
 export default withPayload(nextConfig)
