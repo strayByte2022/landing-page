@@ -24,7 +24,8 @@ const nextConfig = {
   redirects,
   typescript: {
     ignoreBuildErrors: true
-  }
+  },
+  output: 'standalone'
 }
 
 export default withPayload(nextConfig)
