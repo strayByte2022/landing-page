@@ -1,24 +1,23 @@
 version: '3'
 
 services:
-  payload:
-    image: node:18-alpine
+  app:
+    build:
+      context: . # Uses Dockerfile in this directory
+      dockerfile: Dockerfile
+    image: payload-app
     ports:
-      - '3000:3000'
-    volumes:
-      - .:/home/node/app
-      - node_modules:/home/node/app/node_modules
-    working_dir: /home/node/app/
-    command: sh -c "yarn install && yarn dev"
-    depends_on:
-      - mongo
+      - "3000:3000"
     env_file:
       - .env
+    depends_on:
+      - mongo
+    restart: unless-stopped
 
   mongo:
     image: mongo:latest
     ports:
-      - '27017:27017'
+      - "27017:27017"
     command:
       - --storageEngine=wiredTiger
     volumes:
@@ -28,4 +27,3 @@ services:
 
 volumes:
   data:
-  node_modules:
