@@ -36,13 +36,12 @@ RUN adduser --system --uid 1001 nextjs
 # Ensure correct permissions on app directory
 RUN chown -R nextjs:nodejs /app
 
-# Remove this line if you do not have this folder
-COPY --from=builder /app/public ./public
-
-# Set the correct permissions for the .next folder
-RUN mkdir -p /app/.next && chown -R nextjs:nodejs /app/.next
+# Create necessary directories and set permissions
+RUN mkdir -p /app/public /app/.next/static
+RUN chown -R nextjs:nodejs /app/public /app/.next
 
 # Copy the built Next.js application with correct permissions
+COPY --from=builder /app/public ./public
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 

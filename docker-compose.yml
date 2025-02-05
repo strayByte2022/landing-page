@@ -5,7 +5,7 @@ services:
     build:
       context: . # Uses Dockerfile in this directory
       dockerfile: Dockerfile
-    image: payload-app
+    image: payload-app-production
     ports:
       - "3000:3000"
     env_file:
