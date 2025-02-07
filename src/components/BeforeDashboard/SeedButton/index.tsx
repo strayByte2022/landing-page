@@ -72,6 +72,9 @@ export const SeedButton: React.FC = () => {
     [loading, seeded, error],
   )
 
+  const tellThemNotToSeedDbAgain = () =>{
+    toast.error("Database already seeded. Please don't do that.")
+  }
   let message = ''
   if (loading) message = ' (seeding...)'
   if (seeded) message = ' (done!)'
@@ -79,7 +82,7 @@ export const SeedButton: React.FC = () => {
 
   return (
     <Fragment>
-      <button className="seedButton" onClick={handleClick}>
+      <button className="seedButton" onClick={tellThemNotToSeedDbAgain}>
         Seed your database
       </button>
       {message}
